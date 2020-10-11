@@ -1,10 +1,16 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'License-Generator'
+author: 'yi_Xu'
+description: 'Use default template to generate license.'
+
+branding:
+  icon: 'file-text'
+  color: 'blue'
+
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
-    required: true
-    default: '1000'
+  path:
+    description: 'Set up the path of license.'
+    required: false
+    default: LICENSE
 outputs:
   time: # output will be available to future steps
     description: 'The message to output'
