@@ -19,11 +19,8 @@ inputs:
     description: 'Set up the input of boolean type.'
     required: false
     default: false
-  orderMapInput:
+  mapString:
     description: 'Set up the input of order map type.'
-    required: false
-  MapInput:
-    description: 'Set up the input of map type.'
     required: false
 
 outputs:

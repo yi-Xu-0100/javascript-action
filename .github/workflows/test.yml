@@ -19,14 +19,21 @@ jobs:
           path: LICENSE.txt
           stringInput: 'true'
           booleanInput: true
-          orderMapInput:
-            - name: first
-              number: 1
-              bool: true
-            - name: second
-              number: 2
-              bool: false
-          mapInput:
-            name: test
-            number: 1
-            bool: true
+          mapString: >-
+            [
+              {
+                "type": "feat",
+                "section":"Features",
+                "hidden":false
+              },
+              {
+                "type":"fix",
+                "section":"Bug Fixes",
+                "hidden":false
+              },
+              {
+                "type":"chore",
+                "section":"Miscellaneous",
+                "hidden":false
+              }
+            ]
