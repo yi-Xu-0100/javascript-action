@@ -17,3 +17,16 @@ jobs:
         uses: ./
         with:
           path: LICENSE.txt
+          stringInput: 'true'
+          booleanInput: true
+          orderMapInput:
+            - name: first
+              number: 1
+              bool: true
+            - name: second
+              number: 2
+              bool: false
+          mapInput:
+            name: test
+            number: 1
+            bool: true

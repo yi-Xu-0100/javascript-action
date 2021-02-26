@@ -11,6 +11,21 @@ inputs:
     description: 'Set up the path of license.'
     required: false
     default: LICENSE
+  stringInput:
+    description: 'Set up the input of string type.'
+    required: false
+    default: ''
+  booleanInput:
+    description: 'Set up the input of boolean type.'
+    required: false
+    default: false
+  orderMapInput:
+    description: 'Set up the input of order map type.'
+    required: false
+  MapInput:
+    description: 'Set up the input of map type.'
+    required: false
+
 outputs:
   time: # output will be available to future steps
     description: 'The message to output'
