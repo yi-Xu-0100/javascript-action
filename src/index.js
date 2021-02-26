@@ -16,7 +16,7 @@ async function run() {
   const booleanInput = yaml.load(core.getInput('booleanInput'));
   core.info(`booleanInput: ${booleanInput}`);
   core.info(`type of booleanInput: ${typeof booleanInput}`);
-  const mapString = JSON.parse(core.getInput('mapString'));
+  const mapString = yaml.load(core.getInput('mapString'));
   core.info(`mapString: ${mapString}`);
   core.info(`mapString: ${JSON.stringify(mapString)}`);
   core.info(`type of mapString: ${typeof mapString}`);

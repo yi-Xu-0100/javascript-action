@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    booleanInput:
+      repo:
+        description: 'booleanInput'
+        required: false
+        default: false
 
 jobs:
   run:
@@ -18,7 +24,7 @@ jobs:
         with:
           path: LICENSE.txt
           stringInput: 'true'
-          booleanInput: true
+          booleanInput: ${{ github.event.inputs.booleanInput }}
           mapString: >
             [
               { 'type': 'feat', 'section': 'Features', 'hidden': false },
