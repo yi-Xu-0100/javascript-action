@@ -32,16 +32,3 @@ jobs:
               { 'type': 'fix', 'section': 'Bug Fixes', 'hidden': false },
               { 'type': 'chore', 'section': 'Miscellaneous', 'hidden': false }
             ]
-
-      - name: test output
-        env:
-          majorVersion: v${{ steps.test.outputs.test }}
-          minorVersion: v${{ steps.test.outputs.test }}.${{ steps.test.outputs.test }}
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git remote add gh-token "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
-          git tag -fa ${{ env.majorVersion }} -m "Update ${{ env.majorVersion }} tag"
-          git push origin ${{ env.majorVersion }} --force
-          git tag -fa ${{ env.minorVersion }} -m "Update ${{ env.minorVersion }} tag"
-          git push origin ${{ env.minorVersion }} --force

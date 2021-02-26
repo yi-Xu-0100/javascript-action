@@ -57,6 +57,8 @@ jobs:
             const compareVersions = require(`${process.env.GITHUB_WORKSPACE}/node_modules/compare-versions`);
             var currentVersion = `${process.env.currentVersion}`;
             var latestRelease = `${process.env.latestRelease}`;
+            core.setOutput('major', currentVersion.split('.')[0]);
+            core.setOutput('minor', currentVersion.split('.')[1]);
             return compareVersions.compare(currentVersion, latestRelease, ">");
 
       - name: Create release
@@ -71,3 +73,17 @@ jobs:
           body: ${{ steps.changelog-reader.outputs.changes }}
           draft: ${{ steps.changelog-reader.outputs.status == 'unreleased' }}
           prerelease: ${{ steps.changelog-reader.outputs.status == 'prereleased' }}
+
+      - name: Update major and minor tag version
+        if: steps.comparison.outputs.result == 'true'
+        env:
+          majorVersion: v${{ steps.comparison.outputs.major }}
+          minorVersion: v${{ steps.comparison.outputs.major }}.${{ steps.comparison.outputs.minor }}
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git remote add gh-token "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          git tag -fa ${{ env.majorVersion }} -m "Update ${{ env.majorVersion }} tag"
+          git push origin ${{ env.majorVersion }} --force
+          git tag -fa ${{ env.minorVersion }} -m "Update ${{ env.minorVersion }} tag"
+          git push origin ${{ env.minorVersion }} --force
