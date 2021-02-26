@@ -20,6 +20,7 @@ async function run() {
   core.info(`mapString: ${mapString}`);
   core.info(`mapString: ${JSON.stringify(mapString)}`);
   core.info(`type of mapString: ${typeof mapString}`);
+  core.setOutput('test', '1');
   core.endGroup();
 }
 
